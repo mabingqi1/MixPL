@@ -4,6 +4,10 @@ from typing import Dict, Optional, Tuple
 
 import torch
 from torch import Tensor
+from torch.nn import functional as F
+import numpy as np
+import math
+import os.path as osp
 
 from mmdet.models.utils import (filter_gt_instances, rename_loss_dict,
                                 reweight_loss_dict)
@@ -13,10 +17,7 @@ from mmdet.structures import DetDataSample, SampleList
 from mmdet.utils import ConfigType, InstanceList, OptConfigType, OptMultiConfig
 from mmdet.models.detectors import SemiBaseDetector
 from mmdet.structures.bbox import bbox_project
-from torch.nn import functional as F
-import numpy as np
-import math
-import os.path as osp
+
 
 
 @MODELS.register_module()
