@@ -68,7 +68,7 @@ class MixPL(SemiBaseDetector):
 
         sample_size = len(multi_batch_data_samples['unsup_student'])
         mixup_idxs = np.random.choice(range(sample_size), sample_size, replace=False)
-        mosaic_idxs = np.random.choice(range(4), 4, replace=False) + sample_size
+        mosaic_idxs = np.random.choice(range(2), 2, replace=False) + sample_size
         if self.semi_train_cfg.mixup and len(self.cache_inputs) == self.semi_train_cfg.cache_size:
             dst_inputs_list, batch_dst_data_samples = self.split(
                 batch_unsup_inputs, batch_unsup_data_samples)
