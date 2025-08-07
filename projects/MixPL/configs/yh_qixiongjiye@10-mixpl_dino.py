@@ -116,7 +116,7 @@ detector = dict(
         temperature=20),  # 10000 for DeformDETR
     bbox_head=dict(
         type='DINOHead',
-        num_classes=3,
+        num_classes=2,
         sync_cls_avg_factor=True,
         loss_cls=dict(
             type='FocalLoss',
@@ -186,8 +186,8 @@ optim_wrapper = dict(
 )  # custom_keys contains sampling_offsets and reference_points in DeformDETR  # noqa
 
 default_hooks = dict(
-    checkpoint=dict(by_epoch=False, interval=4000, max_keep_ckpts=1))
+    checkpoint=dict(by_epoch=False, interval=2000, max_keep_ckpts=2))
 log_processor = dict(by_epoch=False)
 custom_hooks = [dict(type='MeanTeacherHook', momentum=0.0002, gamma=4)]
-resume=True
+resume=False
 
