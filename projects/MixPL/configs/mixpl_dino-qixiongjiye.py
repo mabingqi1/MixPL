@@ -23,11 +23,11 @@ unlabeled_dataset.data_prefix = dict(img='')
 
 
 train_dataloader = dict(
-    batch_size=24,
+    batch_size=8,
     num_workers=8,
     # persistent_workers=True,
     sampler=dict(type='GroupMultiSourceSampler', 
-                 batch_size=24, 
+                 batch_size=8, 
                  source_ratio=[1, 1]
                  ),
     dataset=dict(type='ConcatDataset', 
@@ -170,7 +170,7 @@ model = dict(
 
 ### TRAINER ###
 train_cfg = dict(
-    type='IterBasedTrainLoop', max_iters=80000, val_interval=2000)
+    type='IterBasedTrainLoop', max_iters=100000, val_interval=2000)
 val_cfg = dict(type='TeacherStudentValLoop')
 test_cfg = dict(type='TestLoop')
 
@@ -186,8 +186,8 @@ optim_wrapper = dict(
 )  # custom_keys contains sampling_offsets and reference_points in DeformDETR  # noqa
 
 default_hooks = dict(
-    checkpoint=dict(by_epoch=False, interval=4000, max_keep_ckpts=1))
+    checkpoint=dict(by_epoch=False, interval=2000, max_keep_ckpts=1))
 log_processor = dict(by_epoch=False)
 custom_hooks = [dict(type='MeanTeacherHook', momentum=0.0002, gamma=4)]
-resume=False
+resume=True
 
