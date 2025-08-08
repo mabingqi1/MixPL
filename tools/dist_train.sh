@@ -16,4 +16,5 @@ python -m torch.distributed.launch \
     --master_port=$PORT \
     $(dirname "$0")/train.py \
     $CONFIG \
-    --launcher pytorch ${@:3}
+    --launcher pytorch ${@:3} \
+    --work-dir ./work_dirs/$(basename ${CONFIG%.*})_1-7

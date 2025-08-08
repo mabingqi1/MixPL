@@ -28,7 +28,7 @@ train_dataloader = dict(
     # persistent_workers=True,
     sampler=dict(type='GroupMultiSourceSampler', 
                  batch_size=8, 
-                 source_ratio=[1, 3]
+                 source_ratio=[1, 7]
                  ),
     dataset=dict(type='ConcatDataset', 
                  datasets=[labeled_dataset, 
