@@ -23,11 +23,11 @@ unlabeled_dataset.data_prefix = dict(img='')
 
 
 train_dataloader = dict(
-    batch_size=8,
+    batch_size=14,
     num_workers=8,
     # persistent_workers=True,
     sampler=dict(type='GroupMultiSourceSampler', 
-                 batch_size=24, 
+                 batch_size=14, 
                  source_ratio=[1, 1]
                  ),
     dataset=dict(type='ConcatDataset', 
@@ -170,7 +170,7 @@ model = dict(
 
 ### TRAINER ###
 train_cfg = dict(
-    type='IterBasedTrainLoop', max_iters=100000, val_interval=2000)
+    type='IterBasedTrainLoop', max_iters=200000, val_interval=2000)
 val_cfg = dict(type='TeacherStudentValLoop')
 test_cfg = dict(type='TestLoop')
 

@@ -23,12 +23,12 @@ unlabeled_dataset.data_prefix = dict(img='')
 
 
 train_dataloader = dict(
-    batch_size=8,
+    batch_size=14,
     num_workers=8,
     # persistent_workers=True,
     sampler=dict(type='GroupMultiSourceSampler', 
-                 batch_size=8, 
-                 source_ratio=[1, 7]
+                 batch_size=14, 
+                 source_ratio=[7, 7]
                  ),
     dataset=dict(type='ConcatDataset', 
                  datasets=[labeled_dataset, 
@@ -57,7 +57,7 @@ test_dataloader = val_dataloader
 # from mmdet.models.data_preprocessors import DetDataPreprocessor
 detector = dict(
     type='DINO',
-    num_queries=600,  # num_matching_queries
+    num_queries=900,  # num_matching_queries
     with_box_refine=True,
     as_two_stage=True,
     data_preprocessor=dict(
