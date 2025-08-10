@@ -186,7 +186,11 @@ optim_wrapper = dict(
 )  # custom_keys contains sampling_offsets and reference_points in DeformDETR  # noqa
 
 default_hooks = dict(
-    checkpoint=dict(by_epoch=False, interval=2000, max_keep_ckpts=2))
+    checkpoint=dict(by_epoch=False, 
+                    interval=2000, 
+                    max_keep_ckpts=2,
+                    save_best='coco/bbox_mAP_50',
+                    ))
 log_processor = dict(by_epoch=False)
 custom_hooks = [dict(type='MeanTeacherHook', momentum=0.0002, gamma=4)]
 resume=False
